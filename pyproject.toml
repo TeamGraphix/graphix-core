@@ -9,5 +9,64 @@ license-files = ["LICENSE"]
 dynamic = ["version"]
 dependencies = []
 
+[project.optional-dependencies]
+dev = ["mypy", "pyright", "ruff"]
+
 [tool.setuptools_scm]
 version_file = "graphix_core/_version.py"
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+preview = true
+select = ["ALL"]
+extend-ignore = [
+  "E74",     # Ambiguous name
+  "FIX",     # Fixme
+  "PLR2004", # Magic vavlue comparison
+  "S101",    # assert
+  "T20",     # print
+  "TD",      # Todo
+  "CPY",     # Copyright
+  "DOC",     # Docstring
+
+  # Conflicts with ruff format
+  "COM812",
+  "COM819",
+  "D206",
+  "D300",
+  "E111",
+  "E114",
+  "E117",
+  "ISC001",
+  "ISC002",
+  "Q000",
+  "Q001",
+  "Q002",
+  "Q003",
+  "W191",
+]
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
+
+[tool.ruff.lint.flake8-tidy-imports]
+ban-relative-imports = "all"
+
+[tool.ruff.lint.isort]
+required-imports = ["from __future__ import annotations"]
+
+[tool.mypy]
+strict = true
+files = ["*.py", "graphix_core", "tests"]
+
+[tool.pyright]
+reportUnknownArgumentType = "information"
+reportUnknownLambdaType = "information"
+reportUnknownMemberType = "information"
+reportUnknownParameterType = "information"
+reportUnknownVariableType = "information"
