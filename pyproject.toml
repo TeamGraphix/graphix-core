@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=77", "wheel", "setuptools_scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "graphix-core"
+requires-python = ">=3.10,<3.14"
+license-files = ["LICENSE"]
+dynamic = ["version"]
+dependencies = []
+
+[tool.setuptools_scm]
+version_file = "graphix_core/_version.py"
